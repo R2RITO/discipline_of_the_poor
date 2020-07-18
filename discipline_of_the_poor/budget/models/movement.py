@@ -4,9 +4,10 @@ users
 """
 from django.db import models
 from budget.models.mixins import BaseMixin
+from budget.models.movement_category import MovementCategory
 
 
 class Movement(BaseMixin):
-    unique_name = models.CharField(unique=True, max_length=100)
     description = models.TextField()
     amount = models.FloatField()
+    category = models.ForeignKey(MovementCategory, on_delete=models.DO_NOTHING)

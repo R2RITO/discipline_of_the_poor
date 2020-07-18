@@ -7,11 +7,15 @@ from rest_framework import routers
 from budget.views.budget_view import BudgetViewSet
 from budget.views.movement_view import MovementViewSet
 from budget.views.movement_category_view import MovementCategoryViewSet
+from budget.views.single_movement_view import SingleMovementViewSet
+from budget.views.periodic_movement_view import PeriodicMovementViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'budget', BudgetViewSet)
 router.register(r'movement', MovementViewSet)
+router.register(r'single_movement', SingleMovementViewSet)
+router.register(r'periodic_movement', PeriodicMovementViewSet)
 router.register(r'movement_category', MovementCategoryViewSet)
 
 urlpatterns = [
