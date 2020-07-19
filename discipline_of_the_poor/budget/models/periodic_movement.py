@@ -6,6 +6,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext as _
 from budget.models.movement import Movement
+from budget.models.budget import Budget
 
 
 class PeriodicMovement(Movement):
@@ -24,10 +25,11 @@ class PeriodicMovement(Movement):
     )
     day_of_week = models.CharField(max_length=50, null=True)
     day_of_month = models.CharField(max_length=10, null=True)
-    time = models.TimeField(default=timezone.now().time())
+    time = models.TimeField(default=timezone.now().time)
     movement = models.OneToOneField(
         Movement,
         on_delete=models.CASCADE,
         parent_link=True,
         primary_key=True,
     )
+    budget = models.ForeignKey(Budget, on_delete=models.DO_NOTHING)

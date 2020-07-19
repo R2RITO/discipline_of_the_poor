@@ -13,5 +13,6 @@ class Budget(BaseMixin):
     available_amount = models.FloatField()
     movements = models.ManyToManyField(
         Movement,
-        through='BudgetMovement'
+        through='BudgetMovement',
+        related_name='budgets',
     )

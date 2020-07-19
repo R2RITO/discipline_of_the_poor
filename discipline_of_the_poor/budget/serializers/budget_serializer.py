@@ -8,6 +8,8 @@ from rest_framework import serializers
 
 class BudgetSerializer(serializers.ModelSerializer):
 
+    available_amount = serializers.FloatField(default=0.0, required=False)
+
     class Meta:
         model = Budget
         fields = [

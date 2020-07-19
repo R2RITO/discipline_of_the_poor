@@ -13,3 +13,18 @@ class BudgetMovement(BaseMixin):
     movement = models.ForeignKey(Movement, on_delete=models.DO_NOTHING)
     # direction true to add to the budget, false for otherwise
     direction = models.BooleanField()
+
+    def save(self, *args, **kwargs):
+        """
+        Method used to alter the budget's available amount.
+        """
+        budget = self.budget
+        amount = self.movement.amount
+
+        if self.direction:
+            budget.available_amount = budget.available_amount + amount
+        else:
+            budget.available_amount = budget.available_amount - amount
+
+        budget.save()
+        super().save(*args, **kwargs)
