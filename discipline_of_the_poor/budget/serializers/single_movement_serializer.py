@@ -35,12 +35,52 @@ class SingleMovementSerializer(serializers.ModelSerializer):
         category = single_movement.movement.category.unique_name
         direction = True if category == 'income' else False
 
-        movement_data = {
+        budget_movement_data = {
             'budget': budget,
             'movement': single_movement.movement,
             'direction': direction,
         }
 
-        charge = BudgetMovement.objects.create(**movement_data)
+        charge = BudgetMovement.objects.create(**budget_movement_data)
 
         return single_movement
+
+    def update(self, instance, validated_data):
+        movement_data = validated_data.pop('movement', {})
+        budget = validated_data.pop('budget', None)
+
+        b_mv = BudgetMovement.objects.filter(
+            movement=instance.movement).first()
+
+        if (budget is not None or
+                movement_data.get('amount', None) is not None or
+                movement_data.get('category', None) is not None):
+            # Delete old BudgetMovement
+            b_mv.delete()
+            budget.refresh_from_db()
+
+            # Update the movement instance to create new BudgetMovement
+            for k, v in movement_data.items():
+                setattr(instance, k, v)
+
+            instance.save()
+
+            # Create new BudgetMovement
+            category = instance.movement.category.unique_name
+            direction = True if category == 'income' else False
+
+            budget_movement_data = {
+                'budget': budget,
+                'movement': instance.movement,
+                'direction': direction,
+            }
+
+            charge = BudgetMovement.objects.create(**budget_movement_data)
+
+        else:
+            for k, v in movement_data.items():
+                setattr(instance, k, v)
+
+            instance.save()
+
+        return instance
