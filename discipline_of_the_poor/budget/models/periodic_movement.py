@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 from budget.models.movement import Movement
 from budget.models.budget import Budget
+from budget.models.budget_movement import BudgetMovement
 
 
 class PeriodicMovement(Movement):
@@ -33,3 +34,15 @@ class PeriodicMovement(Movement):
         primary_key=True,
     )
     budget = models.ForeignKey(Budget, on_delete=models.DO_NOTHING)
+
+    def insert_movement(self):
+        category = self.movement.category.unique_name
+        direction = True if category == 'income' else False
+
+        budget_movement_data = {
+            'budget': self.budget,
+            'movement': self.movement,
+            'direction': direction,
+        }
+
+        charge = BudgetMovement.objects.create(**budget_movement_data)
