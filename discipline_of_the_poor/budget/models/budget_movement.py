@@ -6,8 +6,10 @@ from django.db import models
 from budget.models.mixins import BaseMixin
 from budget.models.budget import Budget
 from budget.models.movement import Movement
+import reversion
 
 
+@reversion.register()
 class BudgetMovement(BaseMixin):
     budget = models.ForeignKey(Budget, on_delete=models.DO_NOTHING)
     movement = models.ForeignKey(Movement, on_delete=models.DO_NOTHING)

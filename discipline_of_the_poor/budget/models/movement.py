@@ -5,8 +5,10 @@ users
 from django.db import models
 from budget.models.mixins import BaseMixin
 from budget.models.movement_category import MovementCategory
+import reversion
 
 
+@reversion.register()
 class Movement(BaseMixin):
     description = models.TextField()
     amount = models.FloatField()
