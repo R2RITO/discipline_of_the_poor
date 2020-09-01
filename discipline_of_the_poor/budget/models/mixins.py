@@ -14,7 +14,7 @@ class BaseManager(models.Manager):
         return super().get_queryset().filter(active=True)
 
 
-class BaseMixin(models.Model):
+class BaseMixin(models.Model):#OwnershipMixin):
     """
     Base class used to provide common attributes to each model
     """

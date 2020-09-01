@@ -1,0 +1,1 @@
+from dotp_users.models.dotp_user import DotpUser

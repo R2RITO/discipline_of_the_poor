@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from django.utils.translation import gettext_lazy as _
+from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'budget',
+    'dotp_users',
+    #'guardian',
 ]
 
 MIDDLEWARE = [
@@ -105,6 +108,33 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'dotp_users.DotpUser'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=150),
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+        #'therappy.permissions.CustomObjectPermissions'
+    ],
+    # 'DEFAULT_FILTER_BACKENDS': [
+    #     'rest_framework_guardian.filters.ObjectPermissionsFilter',
+    # ],
+}
+
+# GUARDIAN_RAISE_403 = True
+# ANONYMOUS_USER_NAME = None
+# GUARDIAN_MONKEY_PATCH = False
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    #'guardian.backends.ObjectPermissionBackend',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

@@ -14,7 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from budget.urls import urlpatterns as budget_urls
+from dotp_users.urls import urlpatterns as dotp_user_urls
+
 
 urlpatterns = []
 
 urlpatterns.extend(budget_urls)
+urlpatterns.extend(dotp_user_urls)
