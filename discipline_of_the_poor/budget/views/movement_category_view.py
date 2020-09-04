@@ -14,3 +14,5 @@ class MovementCategoryViewSet(mixins.ListModelMixin,
 
     queryset = MovementCategory.objects.all()
     serializer_class = MovementCategorySerializer
+    permission_classes = []
+    filter_backends = []

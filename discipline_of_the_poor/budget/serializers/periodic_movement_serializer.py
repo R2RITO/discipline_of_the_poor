@@ -7,9 +7,10 @@ from budget.models.budget import Budget
 from budget.serializers.movement_serializer import MovementSerializer
 from budget.serializers.budget_serializer import BudgetSerializer
 from rest_framework import serializers
+from dotp_users.serializers.mixins import OwnerModelSerializerMixin
 
 
-class PeriodicMovementSerializer(serializers.ModelSerializer):
+class PeriodicMovementSerializer(OwnerModelSerializerMixin):
 
     movement = MovementSerializer(required=True)
     budget_object = BudgetSerializer(read_only=True, source='budget')

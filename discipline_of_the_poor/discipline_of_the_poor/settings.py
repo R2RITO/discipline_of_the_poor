@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'budget',
     'dotp_users',
-    #'guardian',
+    'guardian',
 ]
 
 MIDDLEWARE = [
@@ -120,20 +120,20 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-        #'therappy.permissions.CustomObjectPermissions'
+        'discipline_of_the_poor.permissions.CustomObjectPermissions'
     ],
-    # 'DEFAULT_FILTER_BACKENDS': [
-    #     'rest_framework_guardian.filters.ObjectPermissionsFilter',
-    # ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'rest_framework_guardian.filters.ObjectPermissionsFilter',
+    ],
 }
 
-# GUARDIAN_RAISE_403 = True
-# ANONYMOUS_USER_NAME = None
-# GUARDIAN_MONKEY_PATCH = False
+GUARDIAN_RAISE_403 = True
+ANONYMOUS_USER_NAME = None
+GUARDIAN_MONKEY_PATCH = False
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    #'guardian.backends.ObjectPermissionBackend',
+    'guardian.backends.ObjectPermissionBackend',
 ]
 
 # Internationalization

@@ -4,9 +4,10 @@ serialize a budget.
 """
 from budget.models.budget import Budget
 from rest_framework import serializers
+from dotp_users.serializers.mixins import OwnerModelSerializerMixin
 
 
-class BudgetSerializer(serializers.ModelSerializer):
+class BudgetSerializer(OwnerModelSerializerMixin):
 
     available_amount = serializers.FloatField(default=0.0, required=False)
 
