@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 12:27-0400\n"
+"POT-Creation-Date: 2020-09-07 12:47-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,26 +18,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: budget/models/periodic_movement.py:18
+#: budget/models/periodic_movement.py:26
+#: budget/serializers/periodic_movement_serializer.py:18
 msgid "Daily period"
 msgstr "Período diario"
 
-#: budget/models/periodic_movement.py:19
+#: budget/models/periodic_movement.py:27
+#: budget/serializers/periodic_movement_serializer.py:19
 msgid "Weekly period"
 msgstr "Período semanal"
 
-#: budget/models/periodic_movement.py:20
+#: budget/models/periodic_movement.py:28
+#: budget/serializers/periodic_movement_serializer.py:20
 msgid "Monthly period"
 msgstr "Período mensual"
 
-#: discipline_of_the_poor/settings.py:115
+#: budget/serializers/budget_share_serializer.py:16
+msgid "Change"
+msgstr "Editar"
+
+#: budget/serializers/budget_share_serializer.py:17
+msgid "View"
+msgstr "Ver"
+
+#: budget/serializers/budget_share_serializer.py:21
+msgid "Add permissions"
+msgstr "Agregar permisos"
+
+#: budget/serializers/budget_share_serializer.py:22
+msgid "Remove permissions"
+msgstr "Remover permisos"
+
+#: budget/serializers/budget_share_serializer.py:54
+msgid "Invalid username"
+msgstr "Usuario inválido"
+
+#: budget/serializers/budget_share_serializer.py:61
+msgid "Cannot change owner permissions"
+msgstr "No se pueden cambiar los permisos del dueño"
+
+#: discipline_of_the_poor/settings.py:145
 msgid "Spanish"
 msgstr "Español"
 
-#: discipline_of_the_poor/settings.py:116
+#: discipline_of_the_poor/settings.py:146
 msgid "English"
 msgstr "Inglés"
-
 
 # Movement category translations
 msgid "Income movement, adds to the budget"

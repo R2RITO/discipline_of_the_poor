@@ -7,9 +7,10 @@ from budget.models.movement_category import MovementCategory
 from budget.serializers.movement_category_serializer import (
     MovementCategorySerializer)
 from rest_framework import serializers
+from dotp_users.serializers.mixins import OwnerModelSerializerMixin
 
 
-class MovementSerializer(serializers.ModelSerializer):
+class MovementSerializer(OwnerModelSerializerMixin):
 
     category = serializers.PrimaryKeyRelatedField(
         write_only=True,
