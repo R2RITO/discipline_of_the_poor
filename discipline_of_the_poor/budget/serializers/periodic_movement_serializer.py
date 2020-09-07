@@ -8,6 +8,17 @@ from budget.serializers.movement_serializer import MovementSerializer
 from budget.serializers.budget_serializer import BudgetSerializer
 from rest_framework import serializers
 from dotp_users.serializers.mixins import OwnerModelSerializerMixin
+from django.utils.translation import gettext as _
+
+
+DAILY = 'daily'
+WEEKLY = 'weekly'
+MONTHLY = 'monthly'
+TYPE_CHOICES = [
+    (DAILY, _('Daily period')),
+    (WEEKLY, _('Weekly period')),
+    (MONTHLY, _('Monthly period')),
+]
 
 
 class PeriodicMovementSerializer(OwnerModelSerializerMixin):
@@ -18,6 +29,10 @@ class PeriodicMovementSerializer(OwnerModelSerializerMixin):
         write_only=True,
         queryset=Budget.objects.all(),
         required=True,
+    )
+    type = serializers.ChoiceField(
+        choices=TYPE_CHOICES,
+        default=MONTHLY,
     )
 
     class Meta:
