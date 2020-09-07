@@ -6,6 +6,18 @@ This project uses the standard authentication system provided by django,
 along with the simple-jwt library to provide token authentication for users
 to access the resources. No personal information is encoded on the token.
 
+To activate it, set the settings variables:
+
+    SIMPLE_JWT = {
+        'ACCESS_TOKEN_LIFETIME': timedelta(minutes=150),
+    }
+    
+    REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': [
+            'rest_framework_simplejwt.authentication.JWTAuthentication',
+        ]
+    }
+
 ### Authorization
 
 The authorization process comes in two stages, resource and object permissions.
@@ -46,3 +58,31 @@ to each object when it is created.
 The function budget/models/permission_signals/owner_permissions checks that the
 created model object has an owner attribute, sets it to the current user and
 assigns permissions to the owner.
+
+
+To activate it, set the settings variables:
+
+    REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': [
+            'rest_framework.permissions.IsAuthenticated',
+            'discipline_of_the_poor.permissions.CustomObjectPermissions'
+        ],
+        'DEFAULT_FILTER_BACKENDS': [
+            'rest_framework_guardian.filters.ObjectPermissionsFilter',
+        ],
+    }
+
+    GUARDIAN_RAISE_403 = True
+    ANONYMOUS_USER_NAME = None
+    GUARDIAN_MONKEY_PATCH = False
+    
+    AUTHENTICATION_BACKENDS = [
+        'django.contrib.auth.backends.ModelBackend',
+        'guardian.backends.ObjectPermissionBackend',
+    ]
+
+### Object sharing
+
+Since each object has an owner, for some models the suite allows the owner to
+assign permissions to another user to grant the ability to view or edit said
+object.
