@@ -42,6 +42,7 @@ class BaseMixin(models.Model):
 
 class AuditTrailUser(models.Model):
     user_id = models.CharField(max_length=9)
+    full_name = models.CharField(max_length=100)
     revision = models.ForeignKey(RevisionModel,
                                  null=True,
                                  on_delete=models.SET_NULL)

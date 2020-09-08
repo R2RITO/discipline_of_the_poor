@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'budget.middlewares.audit_middleware.CustomAuditMiddleware',
 ]
 
 ROOT_URLCONF = 'discipline_of_the_poor.urls'

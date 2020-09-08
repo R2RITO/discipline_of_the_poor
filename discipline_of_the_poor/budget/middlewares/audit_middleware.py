@@ -3,6 +3,8 @@ Middleware used to manage the audit structure that saves the changes made
 to models
 """
 from budget.models.mixins import AuditTrailUser
+from dotp_users.models.dotp_user import DotpUser
+import jwt
 import reversion
 from reversion.middleware import RevisionMiddleware
 from functools import wraps
@@ -19,14 +21,18 @@ def _add_meta(request):
     """
     token = request.headers.get('Authorization', u'')
 
-    if token:
-        user_info = payload_from_header(token)
+    if token and len(token.split()) == 2:
+        user_info = jwt.decode(token.split()[1], verify=False)
         user_id = user_info.get('user_id')
+        user = DotpUser.objects.get(id=user_id)
+        full_name = user.first_name + ' ' + user.last_name
     else:
         user_id = ''
+        full_name = ''
 
     params = dict(
-        user_id=user_id
+        user_id=user_id,
+        full_name=full_name,
     )
     reversion.add_meta(AuditTrailUser, **params)
 
