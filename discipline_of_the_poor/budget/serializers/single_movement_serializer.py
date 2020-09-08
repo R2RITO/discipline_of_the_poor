@@ -7,9 +7,10 @@ from budget.models.budget import Budget
 from budget.models.budget_movement import BudgetMovement
 from budget.serializers.movement_serializer import MovementSerializer
 from rest_framework import serializers
+from dotp_users.serializers.mixins import OwnerModelSerializerMixin
 
 
-class SingleMovementSerializer(serializers.ModelSerializer):
+class SingleMovementSerializer(OwnerModelSerializerMixin):
 
     movement = MovementSerializer(required=True)
     budget = serializers.PrimaryKeyRelatedField(
