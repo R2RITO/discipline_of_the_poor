@@ -8,6 +8,7 @@ from django.utils.translation import gettext as _
 from budget.models.movement import Movement
 from budget.models.budget import Budget
 from budget.models.budget_movement import BudgetMovement
+import reversion
 
 
 def default_time():
@@ -18,6 +19,7 @@ def default_time():
     return timezone.now().time()
 
 
+@reversion.register()
 class PeriodicMovement(Movement):
     DAILY = 'daily'
     WEEKLY = 'weekly'
