@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'dotp_users',
     'guardian',
     'reversion',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'discipline_of_the_poor.urls'
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 TEMPLATES = [
     {
@@ -137,6 +142,20 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'guardian.backends.ObjectPermissionBackend',
 ]
+
+# OpenApi swagger settings
+SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'discipline_of_the_poor.urls.schema_info',
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

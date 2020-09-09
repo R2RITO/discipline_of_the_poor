@@ -21,7 +21,7 @@ class BudgetMovement(BaseMixin, OwnershipMixin):
         """
         Method used to alter the budget's available amount.
         """
-        if self.active:
+        if not self.hidden:
             budget = self.budget
             amount = self.movement.amount
 

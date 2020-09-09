@@ -18,6 +18,11 @@ class MovementCategorySerializer(serializers.ModelSerializer):
             'unique_name',
             'description',
         ]
+        examples = {
+            "id": 1,
+            "unique_name": "income",
+            "description": "Income",
+        }
 
     @staticmethod
     def get_description(self):
