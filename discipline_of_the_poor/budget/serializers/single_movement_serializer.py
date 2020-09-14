@@ -25,13 +25,16 @@ class SingleMovementSerializer(OwnerModelSerializerMixin):
             'movement',
             'budget',
         ]
+        examples = {
+            "budget": 1,
+        }
 
     def create(self, validated_data):
         movement_data = validated_data.pop('movement', {})
         budget = validated_data.pop('budget', None)
 
-        single_movement = SingleMovement.objects.create(
-            **movement_data
+        single_movement = super(SingleMovementSerializer, self).create(
+            movement_data
         )
         category = single_movement.movement.category.unique_name
         direction = True if category == 'income' else False
@@ -40,6 +43,7 @@ class SingleMovementSerializer(OwnerModelSerializerMixin):
             'budget': budget,
             'movement': single_movement.movement,
             'direction': direction,
+            'owner': single_movement.owner,
         }
 
         charge = BudgetMovement.objects.create(**budget_movement_data)

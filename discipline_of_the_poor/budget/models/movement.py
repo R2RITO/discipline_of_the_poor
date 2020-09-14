@@ -13,4 +13,7 @@ import reversion
 class Movement(BaseMixin, OwnershipMixin):
     description = models.TextField()
     amount = models.FloatField()
-    category = models.ForeignKey(MovementCategory, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(
+        MovementCategory,
+        on_delete=models.DO_NOTHING
+    )

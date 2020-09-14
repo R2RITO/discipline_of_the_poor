@@ -10,8 +10,22 @@ class DotpUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DotpUser
-        fields = ['id', 'username', 'first_name', 'last_name', 'email',
-                  'password']
+        fields = [
+            'id',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'password',
+        ]
+        examples = {
+            "username": "arturo",
+            "password": "arturo",
+            "first_name": "Arturo",
+            "last_name": "Voltattorni",
+            "email": "avoltattorni@ttt.com"
+        }
+
         write_only_fields = ['password']
         read_only_fields = ['id']
 

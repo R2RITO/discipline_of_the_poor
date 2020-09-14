@@ -38,7 +38,16 @@ class BudgetShareSerializer(serializers.Serializer):
 
     class Meta:
         model = Budget
-        fields = ['username', 'shared_permissions', 'action']
+        fields = [
+            'username',
+            'shared_permissions',
+            'action'
+        ]
+        examples = {
+            "username": "ramirez",
+            "shared_permissions": ["view", "change"],
+            "action": "add",
+        }
 
     def update(self, instance, validated_data):
         """

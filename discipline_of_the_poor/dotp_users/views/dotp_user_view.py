@@ -4,7 +4,7 @@ Module used to handle the creation and updates of DotpUser objects
 from rest_framework import viewsets
 from dotp_users.models.dotp_user import DotpUser
 from dotp_users.serializers.dotp_user_serializer import DotpUserSerializer
-from budget.models.permission_signals import generate_permissions
+from budget.signals.permission_signals import generate_permissions
 
 
 class DotpUserViewSet(viewsets.ModelViewSet):

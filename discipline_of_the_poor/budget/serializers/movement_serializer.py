@@ -27,5 +27,11 @@ class MovementSerializer(OwnerModelSerializerMixin):
             'description',
             'amount',
             'category',
-            'category_object'
+            'category_object',
         ]
+        examples = {
+            "id": 1,
+            "description": "Salary payment",
+            "amount": 500.00,
+            "category": 1,
+        }

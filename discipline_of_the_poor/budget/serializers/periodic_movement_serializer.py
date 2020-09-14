@@ -46,6 +46,13 @@ class PeriodicMovementSerializer(OwnerModelSerializerMixin):
             'budget',
             'budget_object',
         ]
+        examples = {
+            "type": 'daily',
+            "day_of_week": "1",
+            "day_of_month": "25",
+            "time": "17:43:13.170674",
+            "budget": 1,
+        }
 
     def create(self, validated_data):
         movement_data = validated_data.pop('movement', {})

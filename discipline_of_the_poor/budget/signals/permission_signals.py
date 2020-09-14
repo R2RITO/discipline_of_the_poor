@@ -4,9 +4,9 @@ further customize model storage
 """
 
 from django.db.models.signals import post_save
-from django.dispatch import receiver
 from guardian.shortcuts import assign_perm
 from django.contrib.auth.models import Permission
+from django.dispatch import receiver
 
 from dotp_users.models.mixins import OwnershipMixin
 
@@ -18,7 +18,7 @@ from budget.models.single_movement import SingleMovement
 from budget.models.movement_category import MovementCategory
 
 
-MODEL_CLASSES = {
+MODEL_CLASSES_PERMS = {
     Budget.__name__.lower(): ['add', 'change', 'view', 'delete'],
     BudgetMovement.__name__.lower(): ['add', 'change', 'view', 'delete'],
     Movement.__name__.lower(): ['add', 'change', 'view', 'delete'],
@@ -41,6 +41,15 @@ def owner_permissions(sender, **kwargs):
         assign_perm('change_' + sender.__name__.lower(), owner, model_obj)
         assign_perm('delete_' + sender.__name__.lower(), owner, model_obj)
 
+    # Movement subclass
+    if issubclass(sender, Movement):
+        model_obj = kwargs.get('instance')
+        owner = model_obj.owner
+        mov = Movement.objects.get(id=model_obj.movement_id)
+        assign_perm('view_' + Movement.__name__.lower(), owner, mov)
+        assign_perm('change_' + Movement.__name__.lower(), owner, mov)
+        assign_perm('delete_' + Movement.__name__.lower(), owner, mov)
+
 
 def generate_permissions():
     """
@@ -49,7 +58,7 @@ def generate_permissions():
     :return list result: A list with all the permissions to add
     """
     permission_list = []
-    for m, p in MODEL_CLASSES.items():
+    for m, p in MODEL_CLASSES_PERMS.items():
         for perm in p:
             permission_list.append(perm + '_' + m)
 

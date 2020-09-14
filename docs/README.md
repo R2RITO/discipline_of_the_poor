@@ -25,6 +25,10 @@ To enable i18n the important bits on the settings.py file are:
 * Add the configuration variables, for example:
 
     
+    LOCALE_PATHS = [
+        os.path.join(BASE_DIR, 'locale'),
+    ]
+    
     LANGUAGE_CODE = 'en-us'
 
     LANGUAGES = [
