@@ -43,24 +43,51 @@ Set up the environment variables
     BASE_MEDIA_ROOT
     MEDIA_URL
     SESSION_MEDIA_FOLDER
-    DATABASE_NAME
-    DATABASE_USER
-    DATABASE_PASSWORD
-    DATABASE_HOST
-    DATABASE_PORT
     ALLOWED_HOSTS
+    
+    DEFAULT_DATABASE_NAME
+    DEFAULT_DATABASE_USER
+    DEFAULT_DATABASE_PASSWORD
+    DEFAULT_DATABASE_HOST
+    DEFAULT_DATABASE_PORT
+    
+    REGULAR_DATABASE_NAME
+    REGULAR_DATABASE_USER
+    REGULAR_DATABASE_PASSWORD
+    REGULAR_DATABASE_HOST
+    REGULAR_DATABASE_PORT
+    
+    PREMIUM_DATABASE_NAME
+    PREMIUM_DATABASE_USER
+    PREMIUM_DATABASE_PASSWORD
+    PREMIUM_DATABASE_HOST
+    PREMIUM_DATABASE_PORT
+    
     
 Example:
 
     export BASE_MEDIA_ROOT='/home/fulanito/Projects/dotp_media/'
     export MEDIA_URL='http://10.0.0.207/'
     export SESSION_MEDIA_FOLDER='session_media'
-    export DATABASE_NAME='dotp_db'
-    export DATABASE_USER='dotp_user'
-    export DATABASE_PASSWORD='dotp_user'
-    export DATABASE_HOST='localhost'
-    export DATABASE_PORT=5432
     export ALLOWED_HOSTS='0.0.0.0,127.0.0.1'
+    
+    export DEFAULT_DATABASE_NAME='dotp_db'
+    export DEFAULT_DATABASE_USER='dotp_user'
+    export DEFAULT_DATABASE_PASSWORD='dotp_user'
+    export DEFAULT_DATABASE_HOST='localhost'
+    export DEFAULT_DATABASE_PORT=5432
+    
+    export REGULAR_DATABASE_NAME='regular_dotp_db'
+    export REGULAR_DATABASE_USER='regular_dotp_user'
+    export REGULAR_DATABASE_PASSWORD='regular_dotp_user'
+    export REGULAR_DATABASE_HOST='localhost'
+    export REGULAR_DATABASE_PORT=5432
+    
+    export PREMIUM_DATABASE_NAME='premium_dotp_db'
+    export PREMIUM_DATABASE_USER='premium_dotp_user'
+    export PREMIUM_DATABASE_PASSWORD='premium_dotp_user'
+    export PREMIUM_DATABASE_HOST='localhost'
+    export PREMIUM_DATABASE_PORT=5432
 
 ## Requirements
 Install the requirements
@@ -68,7 +95,7 @@ Install the requirements
     pip install -r requirements/prod.txt
 
 ## Database
-Create the database according to the credentials provided in the environment
+Create the databases according to the credentials provided in the environment
 variables.
 
 Run migrations
@@ -76,11 +103,11 @@ Run migrations
     python manage.py makemigrations
     python manage.py migrate
     
-Run populate
+Run populate, substitute DB_USED for the database name to populate
 
     python manage.py shell
     from prepare_database import populate
-    populate()
+    populate(db='DB_USED')
 
 ## Translations
 Compile messages

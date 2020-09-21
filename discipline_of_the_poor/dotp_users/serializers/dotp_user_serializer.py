@@ -17,13 +17,15 @@ class DotpUserSerializer(serializers.ModelSerializer):
             'last_name',
             'email',
             'password',
+            'privilege',
         ]
         examples = {
             "username": "arturo",
             "password": "arturo",
             "first_name": "Arturo",
             "last_name": "Voltattorni",
-            "email": "avoltattorni@ttt.com"
+            "email": "avoltattorni@ttt.com",
+            "privilege": "premium"
         }
 
         write_only_fields = ['password']
@@ -34,7 +36,8 @@ class DotpUserSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             email=validated_data['email'],
             first_name=validated_data['first_name'],
-            last_name=validated_data['last_name']
+            last_name=validated_data['last_name'],
+            privilege=validated_data['privilege']
         )
 
         user.set_password(validated_data['password'])

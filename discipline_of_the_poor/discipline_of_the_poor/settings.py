@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'budget.middlewares.db_middleware.RoutingMiddleware',
     'budget.middlewares.audit_middleware.CustomAuditMiddleware',
 ]
 
@@ -88,13 +89,33 @@ WSGI_APPLICATION = 'discipline_of_the_poor.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DATABASE_NAME'),
-        'USER': os.environ.get('DATABASE_USER'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': os.environ.get('DATABASE_HOST'),
-        'PORT': os.environ.get('DATABASE_PORT'),
-    }
+        'NAME': os.environ.get('DEFAULT_DATABASE_NAME'),
+        'USER': os.environ.get('DEFAULT_DATABASE_USER'),
+        'PASSWORD': os.environ.get('DEFAULT_DATABASE_PASSWORD'),
+        'HOST': os.environ.get('DEFAULT_DATABASE_HOST'),
+        'PORT': os.environ.get('DEFAULT_DATABASE_PORT'),
+    },
+    'regular': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('REGULAR_DATABASE_NAME'),
+        'USER': os.environ.get('REGULAR_DATABASE_USER'),
+        'PASSWORD': os.environ.get('REGULAR_DATABASE_PASSWORD'),
+        'HOST': os.environ.get('REGULAR_DATABASE_HOST'),
+        'PORT': os.environ.get('REGULAR_DATABASE_PORT'),
+    },
+    'premium': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('PREMIUM_DATABASE_NAME'),
+        'USER': os.environ.get('PREMIUM_DATABASE_USER'),
+        'PASSWORD': os.environ.get('PREMIUM_DATABASE_PASSWORD'),
+        'HOST': os.environ.get('PREMIUM_DATABASE_HOST'),
+        'PORT': os.environ.get('PREMIUM_DATABASE_PORT'),
+    },
 }
+
+DATABASE_ROUTERS = [
+    'budget.middlewares.db_middleware.CustomDatabaseRouter'
+]
 
 
 # Password validation
