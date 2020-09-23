@@ -4,7 +4,6 @@ to models
 """
 from budget.models.mixins import AuditTrailUser
 from dotp_users.models.dotp_user import DotpUser
-import jwt
 import reversion
 from reversion.middleware import RevisionMiddleware
 from functools import wraps
@@ -13,6 +12,7 @@ from reversion.revisions import (
 from reversion.views import _RollBackRevisionView
 from reversion.views import _request_creates_revision
 from reversion.views import _set_user_from_request
+from budget.utils.token_utils import payload_from_auth_header
 
 
 def _add_meta(request):
@@ -22,8 +22,8 @@ def _add_meta(request):
     token = request.headers.get('Authorization', u'')
 
     if token and len(token.split()) == 2:
-        user_info = jwt.decode(token.split()[1], verify=False)
-        user_id = user_info.get('user_id')
+        token_info = payload_from_auth_header(token)
+        user_id = token_info.get('user_id')
         user = DotpUser.objects.get(id=user_id)
         full_name = user.first_name + ' ' + user.last_name
     else:
