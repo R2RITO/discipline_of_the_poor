@@ -1,5 +1,10 @@
 # OpenApi docs
 
+Using drf-yasg an OpenApi 2.0 file can be generated, with some rough edges.
+The file needs to be further revised to fix some write only and read only
+fields, and then uploaded alongside the project to be used in an OpenApi
+reader.
+
 ### Library usage
 
 The suite uses the drf-yasg library to generate an OpenApi 2.0 file
