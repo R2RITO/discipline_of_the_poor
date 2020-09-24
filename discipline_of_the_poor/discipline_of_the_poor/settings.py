@@ -29,6 +29,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 
+# Media handling
+
+MEDIA_ROOT = os.environ.get('BASE_MEDIA_ROOT')
+MEDIA_URL = os.environ.get('MEDIA_URL')
+BUDGET_MEDIA_FOLDER = os.environ.get('BUDGET_MEDIA_FOLDER')
 
 # Application definition
 
