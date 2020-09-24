@@ -576,6 +576,12 @@ definitions:
         items:
           $ref: '#/definitions/Movement'
         readOnly: true
+      stats:
+        title: Stats
+        type: string
+        readOnly: true
+        example:
+          message: congrats premium user!
   BudgetShare:
     required:
       - username
@@ -661,6 +667,16 @@ definitions:
         maxLength: 128
         minLength: 1
         example: arturo
+      privilege:
+        title: Privilege
+        type: string
+        enum:
+          - premium
+          - regular
+        description: |-
+          * `premium` - Premium customer
+          * `regular` - Regular customer
+        example: premium
   TokenObtainPair:
     required:
       - username
@@ -721,6 +737,7 @@ definitions:
           * `4` - Budget object (4)
           * `6` - Budget object (6)
           * `3` - Budget object (3)
+          * `7` - Budget object (7)
         example: 1
       budget_object:
         allOf:
@@ -741,4 +758,5 @@ definitions:
           * `4` - Budget object (4)
           * `6` - Budget object (6)
           * `3` - Budget object (3)
+          * `7` - Budget object (7)
         example: 1

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-07 12:47-0400\n"
+"POT-Creation-Date: 2020-09-23 20:50-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: budget/models/periodic_movement.py:26
+#: budget/business/budget_stats/premium.py:18
+msgid "Congratulations premium user!"
+msgstr "¡Felicitaciones usuario premium!"
+
+#: budget/models/periodic_movement.py:28
 #: budget/serializers/periodic_movement_serializer.py:18
 msgid "Daily period"
 msgstr "Período diario"
 
-#: budget/models/periodic_movement.py:27
+#: budget/models/periodic_movement.py:29
 #: budget/serializers/periodic_movement_serializer.py:19
 msgid "Weekly period"
 msgstr "Período semanal"
 
-#: budget/models/periodic_movement.py:28
+#: budget/models/periodic_movement.py:30
 #: budget/serializers/periodic_movement_serializer.py:20
 msgid "Monthly period"
 msgstr "Período mensual"
+
+#: budget/serializers/budget_serializer.py:55
+#, python-brace-format
+msgid "The field {field} cannot be updated"
+msgstr "El campo {field} no puede ser actualizado"
 
 #: budget/serializers/budget_share_serializer.py:16
 msgid "Change"
@@ -49,25 +58,33 @@ msgstr "Agregar permisos"
 msgid "Remove permissions"
 msgstr "Remover permisos"
 
-#: budget/serializers/budget_share_serializer.py:54
+#: budget/serializers/budget_share_serializer.py:63
 msgid "Invalid username"
 msgstr "Usuario inválido"
 
-#: budget/serializers/budget_share_serializer.py:61
+#: budget/serializers/budget_share_serializer.py:70
 msgid "Cannot change owner permissions"
 msgstr "No se pueden cambiar los permisos del dueño"
 
-#: discipline_of_the_poor/settings.py:145
+#: discipline_of_the_poor/settings.py:187
 msgid "Spanish"
 msgstr "Español"
 
-#: discipline_of_the_poor/settings.py:146
+#: discipline_of_the_poor/settings.py:188
 msgid "English"
 msgstr "Inglés"
 
-# Movement category translations
-msgid "Income movement, adds to the budget"
-msgstr "Movimiento de ingreso, agrega al presupuesto"
+#: dotp_users/models/dotp_user.py:14
+msgid "Premium customer"
+msgstr "Cliente premium"
 
-msgid "Expense movement, substracts from the budget"
-msgstr "Movimiento de egreso, sustrae del presupuesto"
+#: dotp_users/models/dotp_user.py:15
+msgid "Regular customer"
+msgstr "Cliente regular"
+
+# Movement category translations
+#~ msgid "Income movement, adds to the budget"
+#~ msgstr "Movimiento de ingreso, agrega al presupuesto"
+
+#~ msgid "Expense movement, substracts from the budget"
+#~ msgstr "Movimiento de egreso, sustrae del presupuesto"
