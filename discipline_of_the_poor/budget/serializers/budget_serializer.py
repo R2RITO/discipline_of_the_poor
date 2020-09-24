@@ -34,6 +34,7 @@ class BudgetSerializer(OwnerModelSerializerMixin):
             'available_amount',
             'movement_objects',
             'stats',
+            'photo',
         ]
         examples = {
             "id": 1,

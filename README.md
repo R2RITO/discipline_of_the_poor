@@ -42,7 +42,7 @@ Set up the environment variables
 
     BASE_MEDIA_ROOT
     MEDIA_URL
-    SESSION_MEDIA_FOLDER
+    BUDGET_MEDIA_FOLDER
     ALLOWED_HOSTS
     
     DEFAULT_DATABASE_NAME
@@ -68,7 +68,7 @@ Example:
 
     export BASE_MEDIA_ROOT='/home/fulanito/Projects/dotp_media/'
     export MEDIA_URL='http://10.0.0.207/'
-    export SESSION_MEDIA_FOLDER='session_media'
+    export BUDGET_MEDIA_FOLDER='budget_media'
     export ALLOWED_HOSTS='0.0.0.0,127.0.0.1'
     
     export DEFAULT_DATABASE_NAME='dotp_db'
