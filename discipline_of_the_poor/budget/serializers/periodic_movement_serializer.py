@@ -9,6 +9,7 @@ from budget.serializers.budget_serializer import BudgetSerializer
 from rest_framework import serializers
 from dotp_users.serializers.mixins import OwnerModelSerializerMixin
 from django.utils.translation import gettext as _
+from budget.async_processes.tasks import register_periodic_movement
 
 
 DAILY = 'daily'
@@ -57,7 +58,10 @@ class PeriodicMovementSerializer(OwnerModelSerializerMixin):
     def create(self, validated_data):
         movement_data = validated_data.pop('movement', {})
         data = {**validated_data, **movement_data}
-        periodic_movement = PeriodicMovement.objects.create(
-            **data
+        periodic_movement = super(PeriodicMovementSerializer, self).create(
+            data
         )
+        # Register the movement to charge the budget periodically
+        register_periodic_movement(periodic_movement)
+
         return periodic_movement
