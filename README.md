@@ -63,6 +63,8 @@ Set up the environment variables
     PREMIUM_DATABASE_HOST
     PREMIUM_DATABASE_PORT
     
+    CELERY_BROKER
+    
     
 Example:
 
@@ -88,6 +90,8 @@ Example:
     export PREMIUM_DATABASE_PASSWORD='premium_dotp_user'
     export PREMIUM_DATABASE_HOST='localhost'
     export PREMIUM_DATABASE_PORT=5432
+    
+    export CELERY_BROKER=amqp://10.20.214.118:5672//
 
 ## Requirements
 Install the requirements
@@ -163,3 +167,25 @@ Compile messages
     When a new directory, or file that requires special attention is created,
     the cython_setup.py file should be updated to include it in the compiled
     sources.
+    
+## Async processes
+
+In order to run the scheduled processes, the project must be setup in a
+dedicated server. Clone the project, install the requirements and setup
+the environment variables.
+    
+After activating the virtual environment, run
+    
+    celery -A budget.async_processes.celery_worker worker -l INFO
+    
+The -A flag specifies the file with the celery app
+
+Then, activates the django-celery-beat scheduler as a separate process:
+
+    celery -A budget.async_processes.celery_worker beat -l INFO -S django
+    
+    
+Then, in another process, start the monitor service that notifies when a
+task fails
+
+    python budget/async_processes/celery_monitor.py
