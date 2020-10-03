@@ -215,3 +215,25 @@ CELERY_BROKER = os.environ.get('CELERY_BROKER')
 # Mail settings
 
 DOTP_EMAIL = os.environ.get('DOTP_EMAIL')
+
+# Logging settings
+
+LOG_FILE_PATH = os.environ.get('LOG_FILE_PATH')
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(LOG_FILE_PATH, 'debug.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

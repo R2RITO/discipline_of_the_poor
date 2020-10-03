@@ -65,7 +65,7 @@ Set up the environment variables
     
     CELERY_BROKER
     DOTP_EMAIL
-    
+    LOG_FILE_PATH
     
 Example:
 
@@ -94,6 +94,7 @@ Example:
     
     export CELERY_BROKER=amqp://10.20.214.118:5672//
     export DOTP_EMAIL='support@dotp.com'
+    export LOG_FILE_PATH='path/to/log/folder/'
 
 ## Requirements
 Install the requirements
