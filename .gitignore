@@ -131,3 +131,6 @@ dmypy.json
 # Setup file
 setup.sh
 variables.sh
+
+# Logs
+logs/
