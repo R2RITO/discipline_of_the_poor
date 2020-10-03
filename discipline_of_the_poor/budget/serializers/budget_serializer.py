@@ -32,6 +32,7 @@ class BudgetSerializer(OwnerModelSerializerMixin):
             'unique_name',
             'description',
             'available_amount',
+            'low_amount',
             'movement_objects',
             'stats',
             'photo',
@@ -41,6 +42,7 @@ class BudgetSerializer(OwnerModelSerializerMixin):
             "unique_name": "feeding_budget",
             "description": "Feeding budget",
             "available_amount": 324.55,
+            "low_amount": 1500.00,
             "stats": {
                 "message": "congrats premium user!"
             }

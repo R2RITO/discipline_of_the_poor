@@ -211,3 +211,7 @@ STATIC_URL = '/static/'
 # Celery settings
 
 CELERY_BROKER = os.environ.get('CELERY_BROKER')
+
+# Mail settings
+
+DOTP_EMAIL = os.environ.get('DOTP_EMAIL')

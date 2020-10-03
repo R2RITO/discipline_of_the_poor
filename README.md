@@ -64,6 +64,7 @@ Set up the environment variables
     PREMIUM_DATABASE_PORT
     
     CELERY_BROKER
+    DOTP_EMAIL
     
     
 Example:
@@ -92,6 +93,7 @@ Example:
     export PREMIUM_DATABASE_PORT=5432
     
     export CELERY_BROKER=amqp://10.20.214.118:5672//
+    export DOTP_EMAIL='support@dotp.com'
 
 ## Requirements
 Install the requirements

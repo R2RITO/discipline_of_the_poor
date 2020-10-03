@@ -19,3 +19,4 @@ class DotpUser(AbstractUser, GuardianUserMixin):
         choices=PRIVILEGE_CHOICES,
         default=REGULAR,
     )
+    notify_low_budget_amount = models.BooleanField(default=False)

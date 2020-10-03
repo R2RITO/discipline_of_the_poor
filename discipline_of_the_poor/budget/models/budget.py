@@ -34,6 +34,7 @@ class Budget(BaseMixin, OwnershipMixin):
     unique_name = models.CharField(unique=True, max_length=100)
     description = models.TextField()
     available_amount = models.FloatField()
+    low_amount = models.FloatField(default=0.0)
     movements = models.ManyToManyField(
         Movement,
         through='BudgetMovement',
