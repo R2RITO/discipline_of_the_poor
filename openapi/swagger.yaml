@@ -309,6 +309,24 @@ paths:
       tags:
         - movement_category
     parameters: []
+  /notify_low_budget_amount:
+    post:
+      operationId: notify_low_budget_amount_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NotifyLowBudgetAmount'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/NotifyLowBudgetAmount'
+      tags:
+        - notify_low_budget_amount
+    parameters: []
   /periodic_movement/:
     get:
       operationId: periodic_movement_list
@@ -582,6 +600,12 @@ definitions:
         readOnly: true
         example:
           message: congrats premium user!
+      photo:
+        title: Photo
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
   BudgetShare:
     required:
       - username
@@ -691,6 +715,15 @@ definitions:
         title: Password
         type: string
         minLength: 1
+  NotifyLowBudgetAmount:
+    required:
+      - notify
+    type: object
+    properties:
+      notify:
+        title: Notify
+        type: boolean
+        example: true
   PeriodicMovement:
     required:
       - movement
@@ -738,6 +771,7 @@ definitions:
           * `6` - Budget object (6)
           * `3` - Budget object (3)
           * `7` - Budget object (7)
+          * `8` - Budget object (8)
         example: 1
       budget_object:
         allOf:
@@ -759,4 +793,5 @@ definitions:
           * `6` - Budget object (6)
           * `3` - Budget object (3)
           * `7` - Budget object (7)
+          * `8` - Budget object (8)
         example: 1

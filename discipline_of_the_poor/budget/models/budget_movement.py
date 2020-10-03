@@ -8,6 +8,8 @@ from budget.models.budget import Budget
 from budget.models.movement import Movement
 from dotp_users.models.mixins import OwnershipMixin
 import reversion
+from budget.business.email.low_budget_notification import (
+    notify_low_available_amount)
 
 
 @reversion.register()
@@ -31,6 +33,11 @@ class BudgetMovement(BaseMixin, OwnershipMixin):
                 budget.available_amount = budget.available_amount - amount
 
             budget.save()
+
+            if (budget.owner.notify_low_budget_amount and
+                    budget.available_amount < budget.low_amount):
+                notify_low_available_amount(budget)
+
         super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
@@ -47,4 +54,9 @@ class BudgetMovement(BaseMixin, OwnershipMixin):
             budget.available_amount = budget.available_amount + amount
 
         budget.save()
+
+        if (budget.owner.notify_low_budget_amount and
+                budget.available_amount < budget.low_amount):
+            notify_low_available_amount(budget)
+
         super().delete(*args, **kwargs)

@@ -28,6 +28,11 @@ The file is generated statically (instead of the normal drf-yasg usage which
 is to provide a web interface to interact with the service) because some manual
 editing needs to be done to further improve the documentation file.
 
+### APIView docs
+
+When a generic APIView is used instead of the regular ModelViewSet, the
+definition can be specified as shown in the notify_low_budget_amount_view file
+
 ### Swagger file
 
 The gotchas about using drf-yasg are subtle and the ones I know are listed as
