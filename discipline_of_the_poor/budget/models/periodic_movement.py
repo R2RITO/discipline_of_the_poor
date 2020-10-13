@@ -8,8 +8,18 @@ from django.utils.translation import gettext as _
 from budget.models.movement import Movement
 from budget.models.budget import Budget
 from budget.models.budget_movement import BudgetMovement
+import reversion
 
 
+def default_time():
+    """
+    Function used to return the time now
+    :return:
+    """
+    return timezone.now().time()
+
+
+@reversion.register()
 class PeriodicMovement(Movement):
     DAILY = 'daily'
     WEEKLY = 'weekly'
@@ -26,7 +36,7 @@ class PeriodicMovement(Movement):
     )
     day_of_week = models.CharField(max_length=50, null=True)
     day_of_month = models.CharField(max_length=10, null=True)
-    time = models.TimeField(default=timezone.now().time)
+    time = models.TimeField(default=default_time)
     movement = models.OneToOneField(
         Movement,
         on_delete=models.CASCADE,

@@ -7,9 +7,10 @@ from budget.models.movement_category import MovementCategory
 from budget.serializers.movement_category_serializer import (
     MovementCategorySerializer)
 from rest_framework import serializers
+from dotp_users.serializers.mixins import OwnerModelSerializerMixin
 
 
-class MovementSerializer(serializers.ModelSerializer):
+class MovementSerializer(OwnerModelSerializerMixin):
 
     category = serializers.PrimaryKeyRelatedField(
         write_only=True,
@@ -26,5 +27,11 @@ class MovementSerializer(serializers.ModelSerializer):
             'description',
             'amount',
             'category',
-            'category_object'
+            'category_object',
         ]
+        examples = {
+            "id": 1,
+            "description": "Salary payment",
+            "amount": 500.00,
+            "category": 1,
+        }

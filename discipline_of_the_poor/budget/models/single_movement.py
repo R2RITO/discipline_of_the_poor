@@ -4,8 +4,10 @@ one time
 """
 from budget.models.movement import Movement
 from django.db import models
+import reversion
 
 
+@reversion.register()
 class SingleMovement(Movement):
     movement = models.OneToOneField(
         Movement,

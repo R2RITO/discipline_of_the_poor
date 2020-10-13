@@ -6,9 +6,14 @@ from django.db import models
 from budget.models.mixins import BaseMixin
 from budget.models.budget import Budget
 from budget.models.movement import Movement
+from dotp_users.models.mixins import OwnershipMixin
+import reversion
+from budget.business.email.low_budget_notification import (
+    notify_low_available_amount)
 
 
-class BudgetMovement(BaseMixin):
+@reversion.register()
+class BudgetMovement(BaseMixin, OwnershipMixin):
     budget = models.ForeignKey(Budget, on_delete=models.DO_NOTHING)
     movement = models.ForeignKey(Movement, on_delete=models.DO_NOTHING)
     # direction true to add to the budget, false for otherwise
@@ -18,7 +23,7 @@ class BudgetMovement(BaseMixin):
         """
         Method used to alter the budget's available amount.
         """
-        if self.active:
+        if not self.hidden:
             budget = self.budget
             amount = self.movement.amount
 
@@ -28,6 +33,11 @@ class BudgetMovement(BaseMixin):
                 budget.available_amount = budget.available_amount - amount
 
             budget.save()
+
+            if (budget.owner.notify_low_budget_amount and
+                    budget.available_amount < budget.low_amount):
+                notify_low_available_amount(budget)
+
         super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
@@ -44,4 +54,9 @@ class BudgetMovement(BaseMixin):
             budget.available_amount = budget.available_amount + amount
 
         budget.save()
+
+        if (budget.owner.notify_low_budget_amount and
+                budget.available_amount < budget.low_amount):
+            notify_low_available_amount(budget)
+
         super().delete(*args, **kwargs)

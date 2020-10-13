@@ -7,9 +7,22 @@ from budget.models.budget import Budget
 from budget.serializers.movement_serializer import MovementSerializer
 from budget.serializers.budget_serializer import BudgetSerializer
 from rest_framework import serializers
+from dotp_users.serializers.mixins import OwnerModelSerializerMixin
+from django.utils.translation import gettext as _
+from budget.async_processes.tasks import register_periodic_movement
 
 
-class PeriodicMovementSerializer(serializers.ModelSerializer):
+DAILY = 'daily'
+WEEKLY = 'weekly'
+MONTHLY = 'monthly'
+TYPE_CHOICES = [
+    (DAILY, _('Daily period')),
+    (WEEKLY, _('Weekly period')),
+    (MONTHLY, _('Monthly period')),
+]
+
+
+class PeriodicMovementSerializer(OwnerModelSerializerMixin):
 
     movement = MovementSerializer(required=True)
     budget_object = BudgetSerializer(read_only=True, source='budget')
@@ -17,6 +30,10 @@ class PeriodicMovementSerializer(serializers.ModelSerializer):
         write_only=True,
         queryset=Budget.objects.all(),
         required=True,
+    )
+    type = serializers.ChoiceField(
+        choices=TYPE_CHOICES,
+        default=MONTHLY,
     )
 
     class Meta:
@@ -30,11 +47,21 @@ class PeriodicMovementSerializer(serializers.ModelSerializer):
             'budget',
             'budget_object',
         ]
+        examples = {
+            "type": 'daily',
+            "day_of_week": "1",
+            "day_of_month": "25",
+            "time": "17:43:13.170674",
+            "budget": 1,
+        }
 
     def create(self, validated_data):
         movement_data = validated_data.pop('movement', {})
         data = {**validated_data, **movement_data}
-        periodic_movement = PeriodicMovement.objects.create(
-            **data
+        periodic_movement = super(PeriodicMovementSerializer, self).create(
+            data
         )
+        # Register the movement to charge the budget periodically
+        register_periodic_movement(periodic_movement)
+
         return periodic_movement

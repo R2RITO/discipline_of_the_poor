@@ -7,9 +7,10 @@ from budget.models.budget import Budget
 from budget.models.budget_movement import BudgetMovement
 from budget.serializers.movement_serializer import MovementSerializer
 from rest_framework import serializers
+from dotp_users.serializers.mixins import OwnerModelSerializerMixin
 
 
-class SingleMovementSerializer(serializers.ModelSerializer):
+class SingleMovementSerializer(OwnerModelSerializerMixin):
 
     movement = MovementSerializer(required=True)
     budget = serializers.PrimaryKeyRelatedField(
@@ -24,13 +25,16 @@ class SingleMovementSerializer(serializers.ModelSerializer):
             'movement',
             'budget',
         ]
+        examples = {
+            "budget": 1,
+        }
 
     def create(self, validated_data):
         movement_data = validated_data.pop('movement', {})
         budget = validated_data.pop('budget', None)
 
-        single_movement = SingleMovement.objects.create(
-            **movement_data
+        single_movement = super(SingleMovementSerializer, self).create(
+            movement_data
         )
         category = single_movement.movement.category.unique_name
         direction = True if category == 'income' else False
@@ -39,6 +43,7 @@ class SingleMovementSerializer(serializers.ModelSerializer):
             'budget': budget,
             'movement': single_movement.movement,
             'direction': direction,
+            'owner': single_movement.owner,
         }
 
         charge = BudgetMovement.objects.create(**budget_movement_data)

@@ -1,0 +1,797 @@
+swagger: '2.0'
+info:
+  title: Discipline of the poor API
+  description: |-
+    API for everything related to managing budgets.
+    In order to try the endpoints, you must log in and provide a token in the form 'Bearer \{\{token\}\}'
+  contact:
+    email: support@dotp.com
+  version: v1
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+security:
+  - Bearer: []
+paths:
+  /budget/:
+    get:
+      operationId: budget_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Budget'
+      tags:
+        - budget
+    post:
+      operationId: budget_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Budget'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Budget'
+      tags:
+        - budget
+    parameters: []
+  /budget/share/{id}/:
+    put:
+      operationId: budget_share_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BudgetShare'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BudgetShare'
+      tags:
+        - budget
+    patch:
+      operationId: budget_share_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BudgetShare'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BudgetShare'
+      tags:
+        - budget
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this budget.
+        required: true
+        type: integer
+  /budget/{id}/:
+    get:
+      operationId: budget_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Budget'
+      tags:
+        - budget
+    put:
+      operationId: budget_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Budget'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Budget'
+      tags:
+        - budget
+    patch:
+      operationId: budget_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Budget'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Budget'
+      tags:
+        - budget
+    delete:
+      operationId: budget_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - budget
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this budget.
+        required: true
+        type: integer
+  /dotp_auth/refresh:
+    post:
+      operationId: dotp_auth_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      tags:
+        - dotp_auth
+    parameters: []
+  /dotp_auth/register/:
+    get:
+      operationId: dotp_auth_register_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DotpUser'
+      tags:
+        - dotp_auth
+    post:
+      operationId: dotp_auth_register_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DotpUser'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/DotpUser'
+      tags:
+        - dotp_auth
+    parameters: []
+  /dotp_auth/register/{id}/:
+    get:
+      operationId: dotp_auth_register_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DotpUser'
+      tags:
+        - dotp_auth
+    put:
+      operationId: dotp_auth_register_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DotpUser'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DotpUser'
+      tags:
+        - dotp_auth
+    patch:
+      operationId: dotp_auth_register_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DotpUser'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DotpUser'
+      tags:
+        - dotp_auth
+    delete:
+      operationId: dotp_auth_register_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - dotp_auth
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this user.
+        required: true
+        type: integer
+  /dotp_auth/token:
+    post:
+      operationId: dotp_auth_token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TokenObtainPair'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TokenObtainPair'
+      tags:
+        - dotp_auth
+    parameters: []
+  /movement/:
+    get:
+      operationId: movement_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Movement'
+      tags:
+        - movement
+    parameters: []
+  /movement_category/:
+    get:
+      operationId: movement_category_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MovementCategory'
+      tags:
+        - movement_category
+    parameters: []
+  /notify_low_budget_amount:
+    post:
+      operationId: notify_low_budget_amount_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NotifyLowBudgetAmount'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/NotifyLowBudgetAmount'
+      tags:
+        - notify_low_budget_amount
+    parameters: []
+  /periodic_movement/:
+    get:
+      operationId: periodic_movement_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PeriodicMovement'
+      tags:
+        - periodic_movement
+    post:
+      operationId: periodic_movement_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PeriodicMovement'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/PeriodicMovement'
+      tags:
+        - periodic_movement
+    parameters: []
+  /periodic_movement/{id}/:
+    get:
+      operationId: periodic_movement_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PeriodicMovement'
+      tags:
+        - periodic_movement
+    put:
+      operationId: periodic_movement_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PeriodicMovement'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PeriodicMovement'
+      tags:
+        - periodic_movement
+    patch:
+      operationId: periodic_movement_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PeriodicMovement'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PeriodicMovement'
+      tags:
+        - periodic_movement
+    delete:
+      operationId: periodic_movement_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - periodic_movement
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this periodic movement.
+        required: true
+        type: integer
+  /single_movement/:
+    get:
+      operationId: single_movement_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SingleMovement'
+      tags:
+        - single_movement
+    post:
+      operationId: single_movement_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SingleMovement'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/SingleMovement'
+      tags:
+        - single_movement
+    parameters: []
+  /single_movement/{id}/:
+    get:
+      operationId: single_movement_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SingleMovement'
+      tags:
+        - single_movement
+    put:
+      operationId: single_movement_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SingleMovement'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SingleMovement'
+      tags:
+        - single_movement
+    patch:
+      operationId: single_movement_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SingleMovement'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SingleMovement'
+      tags:
+        - single_movement
+    delete:
+      operationId: single_movement_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - single_movement
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this single movement.
+        required: true
+        type: integer
+definitions:
+  MovementCategory:
+    title: Category object
+    required:
+      - unique_name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+        example: 1
+      unique_name:
+        title: Unique name
+        type: string
+        maxLength: 100
+        minLength: 1
+        example: income
+      description:
+        title: Description
+        type: string
+        readOnly: true
+        example: Income
+  Movement:
+    required:
+      - description
+      - amount
+      - category
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+        example: 1
+      description:
+        title: Description
+        type: string
+        minLength: 1
+        example: Salary payment
+      amount:
+        title: Amount
+        type: number
+        example: 500.0
+      category:
+        title: Category
+        type: integer
+        description: |-
+          * `1` - MovementCategory object (1)
+          * `2` - MovementCategory object (2)
+        example: 1
+      category_object:
+        allOf:
+        - readOnly: true
+        - $ref: '#/definitions/MovementCategory'
+  Budget:
+    required:
+      - unique_name
+      - description
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+        example: 1
+      unique_name:
+        title: Unique name
+        type: string
+        maxLength: 100
+        minLength: 1
+        example: feeding_budget
+      description:
+        title: Description
+        type: string
+        minLength: 1
+        example: Feeding budget
+      available_amount:
+        title: Available amount
+        type: number
+        default: 0.0
+        example: 324.55
+      movement_objects:
+        type: array
+        items:
+          $ref: '#/definitions/Movement'
+        readOnly: true
+      stats:
+        title: Stats
+        type: string
+        readOnly: true
+        example:
+          message: congrats premium user!
+      photo:
+        title: Photo
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+  BudgetShare:
+    required:
+      - username
+      - shared_permissions
+      - action
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+        minLength: 1
+        example: ramirez
+      shared_permissions:
+        type: array
+        items:
+          type: string
+          enum:
+            - change
+            - view
+        description: |-
+          * `change` - Change
+          * `view` - View
+        example:
+          - view
+          - change
+      action:
+        title: Action
+        type: string
+        enum:
+          - add
+          - remove
+        description: |-
+          * `add` - Add permissions
+          * `remove` - Remove permissions
+        example: add
+  TokenRefresh:
+    required:
+      - refresh
+    type: object
+    properties:
+      refresh:
+        title: Refresh
+        type: string
+        minLength: 1
+  DotpUser:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      username:
+        title: Username
+        description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+          only.
+        type: string
+        pattern: ^[\w.@+-]+$
+        maxLength: 150
+        minLength: 1
+        example: arturo
+      first_name:
+        title: First name
+        type: string
+        maxLength: 30
+        example: Arturo
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 150
+        example: Voltattorni
+      email:
+        title: Email address
+        type: string
+        format: email
+        maxLength: 254
+        example: avoltattorni@ttt.com
+      password:
+        title: Password
+        type: string
+        maxLength: 128
+        minLength: 1
+        example: arturo
+      privilege:
+        title: Privilege
+        type: string
+        enum:
+          - premium
+          - regular
+        description: |-
+          * `premium` - Premium customer
+          * `regular` - Regular customer
+        example: premium
+  TokenObtainPair:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  NotifyLowBudgetAmount:
+    required:
+      - notify
+    type: object
+    properties:
+      notify:
+        title: Notify
+        type: boolean
+        example: true
+  PeriodicMovement:
+    required:
+      - movement
+      - budget
+    type: object
+    properties:
+      type:
+        title: Type
+        type: string
+        enum:
+          - daily
+          - weekly
+          - monthly
+        default: monthly
+        description: |-
+          * `daily` - Daily period
+          * `weekly` - Weekly period
+          * `monthly` - Monthly period
+        example: daily
+      day_of_week:
+        title: Day of week
+        type: string
+        maxLength: 50
+        minLength: 1
+        x-nullable: true
+        example: '1'
+      day_of_month:
+        title: Day of month
+        type: string
+        maxLength: 10
+        minLength: 1
+        x-nullable: true
+        example: '25'
+      time:
+        title: Time
+        type: string
+        example: 17:43:13.170674
+      movement:
+        $ref: '#/definitions/Movement'
+      budget:
+        title: Budget
+        type: integer
+        description: |-
+          * `4` - Budget object (4)
+          * `6` - Budget object (6)
+          * `3` - Budget object (3)
+          * `7` - Budget object (7)
+          * `8` - Budget object (8)
+        example: 1
+      budget_object:
+        allOf:
+          - readOnly: true
+          - $ref: '#/definitions/Budget'
+  SingleMovement:
+    required:
+      - movement
+      - budget
+    type: object
+    properties:
+      movement:
+        $ref: '#/definitions/Movement'
+      budget:
+        title: Budget
+        type: integer
+        description: |-
+          * `4` - Budget object (4)
+          * `6` - Budget object (6)
+          * `3` - Budget object (3)
+          * `7` - Budget object (7)
+          * `8` - Budget object (8)
+        example: 1
