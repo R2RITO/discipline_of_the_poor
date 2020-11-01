@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'reversion',
     'drf_yasg',
     'django_celery_beat',
+    'vinaigrette',
 ]
 
 MIDDLEWARE = [
