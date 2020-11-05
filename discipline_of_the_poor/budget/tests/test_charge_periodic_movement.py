@@ -25,7 +25,17 @@ class ChargePeriodicMovementTest(TestCase):
         mv = PeriodicMovement.objects.get(pk=38)
         expected_amount = b.available_amount + mv.amount
 
-        charge_periodic_movement(38)
+        charge_periodic_movement('38')
+        b.refresh_from_db()
+
+        assert expected_amount == b.available_amount
+
+    def test_substract_from_budget(self):
+        b = Budget.objects.get(pk=8)
+        mv = PeriodicMovement.objects.get(pk=41)
+        expected_amount = b.available_amount - mv.amount
+
+        charge_periodic_movement('41')
         b.refresh_from_db()
 
         assert expected_amount == b.available_amount
