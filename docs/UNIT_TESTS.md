@@ -17,3 +17,9 @@ The fixtures are created using the commands:
     python manage.py dumpdata budget.periodicmovement --format=json --indent=4 > budget/tests/fixtures/periodic_movement.json
     python manage.py dumpdata budget.movement --format=json --indent=4 > budget/tests/fixtures/movement.json
     python manage.py dumpdata dotp_users.dotpuser --natural-foreign --format=json --indent=4 > budget/tests/fixtures/dotp_user.json
+    
+
+### Running the tests
+
+    
+    python manage.py test budget.tests.unit
