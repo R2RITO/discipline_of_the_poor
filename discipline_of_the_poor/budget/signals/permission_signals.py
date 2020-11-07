@@ -34,16 +34,19 @@ def owner_permissions(sender, **kwargs):
     Function used to assign read and write permissions to the owner
     of the model created
     """
+    if kwargs.get('raw', False):
+        model_obj = sender.objects.get(pk=kwargs['instance'].pk)
+    else:
+        model_obj = kwargs['instance']
+
     if issubclass(sender, OwnershipMixin) and kwargs.get('created'):
-        model_obj = kwargs.get('instance')
         owner = model_obj.owner
         assign_perm('view_' + sender.__name__.lower(), owner, model_obj)
         assign_perm('change_' + sender.__name__.lower(), owner, model_obj)
         assign_perm('delete_' + sender.__name__.lower(), owner, model_obj)
 
     # Movement subclass
-    if issubclass(sender, Movement):
-        model_obj = kwargs.get('instance')
+    if issubclass(sender, Movement) and not (sender is Movement):
         owner = model_obj.owner
         mov = Movement.objects.get(id=model_obj.movement_id)
         assign_perm('view_' + Movement.__name__.lower(), owner, mov)

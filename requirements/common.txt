@@ -12,3 +12,5 @@ celery==4.4.7
 django-celery-beat==2.0.0
 yagmail==0.13.241
 Cython==0.29.21
+PyJWT==1.7.1
+django-vinaigrette==2.0.1
