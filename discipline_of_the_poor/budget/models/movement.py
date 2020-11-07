@@ -12,7 +12,7 @@ import reversion
 @reversion.register()
 class Movement(BaseMixin, OwnershipMixin):
     description = models.TextField()
-    amount = models.FloatField()
+    amount = models.DecimalField(max_digits=11, decimal_places=2)
     category = models.ForeignKey(
         MovementCategory,
         on_delete=models.DO_NOTHING

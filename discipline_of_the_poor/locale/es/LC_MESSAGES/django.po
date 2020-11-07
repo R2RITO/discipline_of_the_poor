@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-23 20:50-0400\n"
+"POT-Creation-Date: 2020-11-01 15:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,21 +23,21 @@ msgid "Congratulations premium user!"
 msgstr "¡Felicitaciones usuario premium!"
 
 #: budget/models/periodic_movement.py:28
-#: budget/serializers/periodic_movement_serializer.py:18
+#: budget/serializers/periodic_movement_serializer.py:19
 msgid "Daily period"
 msgstr "Período diario"
 
 #: budget/models/periodic_movement.py:29
-#: budget/serializers/periodic_movement_serializer.py:19
+#: budget/serializers/periodic_movement_serializer.py:20
 msgid "Weekly period"
 msgstr "Período semanal"
 
 #: budget/models/periodic_movement.py:30
-#: budget/serializers/periodic_movement_serializer.py:20
+#: budget/serializers/periodic_movement_serializer.py:21
 msgid "Monthly period"
 msgstr "Período mensual"
 
-#: budget/serializers/budget_serializer.py:55
+#: budget/serializers/budget_serializer.py:58
 #, python-brace-format
 msgid "The field {field} cannot be updated"
 msgstr "El campo {field} no puede ser actualizado"
@@ -66,11 +66,11 @@ msgstr "Usuario inválido"
 msgid "Cannot change owner permissions"
 msgstr "No se pueden cambiar los permisos del dueño"
 
-#: discipline_of_the_poor/settings.py:187
+#: discipline_of_the_poor/settings.py:194
 msgid "Spanish"
 msgstr "Español"
 
-#: discipline_of_the_poor/settings.py:188
+#: discipline_of_the_poor/settings.py:195
 msgid "English"
 msgstr "Inglés"
 
@@ -82,9 +82,10 @@ msgstr "Cliente premium"
 msgid "Regular customer"
 msgstr "Cliente regular"
 
-# Movement category translations
-#~ msgid "Income movement, adds to the budget"
-#~ msgstr "Movimiento de ingreso, agrega al presupuesto"
+#: budget.MovementCategory/description:1
+msgid "Income movement, adds to the budget"
+msgstr "Movimiento de ingreso, agrega al presupuesto"
 
-#~ msgid "Expense movement, substracts from the budget"
-#~ msgstr "Movimiento de egreso, sustrae del presupuesto"
+#: budget.MovementCategory/description:2
+msgid "Expense movement, substracts from the budget"
+msgstr "Movimiento de egreso, sustrae del presupuesto"

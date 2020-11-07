@@ -9,6 +9,7 @@ from dotp_users.models.mixins import OwnershipMixin
 import reversion
 from django.conf import settings
 import os
+from decimal import Decimal
 
 
 def get_storage_path(instance, filename):
@@ -33,8 +34,12 @@ def get_storage_path(instance, filename):
 class Budget(BaseMixin, OwnershipMixin):
     unique_name = models.CharField(unique=True, max_length=100)
     description = models.TextField()
-    available_amount = models.FloatField()
-    low_amount = models.FloatField(default=0.0)
+    available_amount = models.DecimalField(max_digits=11, decimal_places=2)
+    low_amount = models.DecimalField(
+        max_digits=11,
+        decimal_places=2,
+        default=Decimal('0.00'),
+    )
     movements = models.ManyToManyField(
         Movement,
         through='BudgetMovement',
