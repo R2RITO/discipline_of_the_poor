@@ -1,0 +1,210 @@
+[
+{
+    "model": "budget.movement",
+    "pk": 24,
+    "fields": {
+        "create_date": "2020-09-09T16:34:27.261Z",
+        "update_date": "2020-09-09T16:34:27.261Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 25,
+    "fields": {
+        "create_date": "2020-09-11T16:41:10.255Z",
+        "update_date": "2020-09-11T16:41:10.255Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso signal",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 26,
+    "fields": {
+        "create_date": "2020-09-11T16:53:20.363Z",
+        "update_date": "2020-09-11T16:53:20.363Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso signal 2",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 27,
+    "fields": {
+        "create_date": "2020-09-11T17:21:25.742Z",
+        "update_date": "2020-09-11T17:21:25.742Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso custom recv",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 28,
+    "fields": {
+        "create_date": "2020-09-11T17:25:15.684Z",
+        "update_date": "2020-09-11T17:25:15.684Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso custom recv2",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 29,
+    "fields": {
+        "create_date": "2020-09-14T14:57:29.646Z",
+        "update_date": "2020-09-14T14:57:29.646Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso custom recv3",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 30,
+    "fields": {
+        "create_date": "2020-09-14T15:22:36.572Z",
+        "update_date": "2020-09-14T15:22:36.572Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso custom recv4",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 31,
+    "fields": {
+        "create_date": "2020-09-14T15:42:42.357Z",
+        "update_date": "2020-09-14T15:42:42.357Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso custom recv4",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 33,
+    "fields": {
+        "create_date": "2020-09-14T16:41:29.884Z",
+        "update_date": "2020-09-14T16:41:29.884Z",
+        "hidden": false,
+        "owner": 3,
+        "description": "Un tremendo ingreso custom recv5",
+        "amount": "1000.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 35,
+    "fields": {
+        "create_date": "2020-09-30T00:16:05.915Z",
+        "update_date": "2020-09-30T00:16:05.915Z",
+        "hidden": false,
+        "owner": 4,
+        "description": "Bonazo periodico",
+        "amount": "100.36",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 36,
+    "fields": {
+        "create_date": "2020-09-30T00:21:50.113Z",
+        "update_date": "2020-09-30T00:21:50.113Z",
+        "hidden": false,
+        "owner": 4,
+        "description": "Bonazo periodico 2",
+        "amount": "100.36",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 37,
+    "fields": {
+        "create_date": "2020-09-30T00:22:37.357Z",
+        "update_date": "2020-09-30T00:22:37.357Z",
+        "hidden": false,
+        "owner": 4,
+        "description": "Bonazo periodico 3",
+        "amount": "100.36",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 38,
+    "fields": {
+        "create_date": "2020-09-30T00:28:55.693Z",
+        "update_date": "2020-09-30T00:28:55.693Z",
+        "hidden": false,
+        "owner": 4,
+        "description": "Bonazo periodico 4",
+        "amount": "100.36",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 39,
+    "fields": {
+        "create_date": "2020-10-03T18:17:33.944Z",
+        "update_date": "2020-10-03T18:17:33.945Z",
+        "hidden": false,
+        "owner": 4,
+        "description": "Ingreso notify",
+        "amount": "50.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 40,
+    "fields": {
+        "create_date": "2020-10-03T18:19:01.097Z",
+        "update_date": "2020-10-03T18:19:01.097Z",
+        "hidden": false,
+        "owner": 4,
+        "description": "Ingreso notify",
+        "amount": "50.00",
+        "category": 1
+    }
+},
+{
+    "model": "budget.movement",
+    "pk": 41,
+    "fields": {
+        "create_date": "2020-11-04T02:58:45.839Z",
+        "update_date": "2020-11-04T02:58:45.839Z",
+        "hidden": false,
+        "owner": 4,
+        "description": "Gasto periodico",
+        "amount": "133.36",
+        "category": 2
+    }
+}
+]

@@ -1,0 +1,77 @@
+[
+{
+    "model": "budget.budget",
+    "pk": 3,
+    "fields": {
+        "create_date": "2020-09-02T16:27:00.634Z",
+        "update_date": "2020-09-14T16:41:29.945Z",
+        "hidden": false,
+        "owner": 3,
+        "unique_name": "feeding_budget",
+        "description": "Feeding budget",
+        "available_amount": 9000.0,
+        "low_amount": 0.0,
+        "photo": ""
+    }
+},
+{
+    "model": "budget.budget",
+    "pk": 4,
+    "fields": {
+        "create_date": "2020-09-07T16:42:57.336Z",
+        "update_date": "2020-09-07T16:42:57.336Z",
+        "hidden": false,
+        "owner": 3,
+        "unique_name": "sharing_budget",
+        "description": "Sharing budget",
+        "available_amount": 0.0,
+        "low_amount": 0.0,
+        "photo": ""
+    }
+},
+{
+    "model": "budget.budget",
+    "pk": 6,
+    "fields": {
+        "create_date": "2020-09-08T16:52:07.634Z",
+        "update_date": "2020-09-08T16:52:07.634Z",
+        "hidden": false,
+        "owner": 3,
+        "unique_name": "audit_budget",
+        "description": "Audit budget",
+        "available_amount": 0.0,
+        "low_amount": 0.0,
+        "photo": ""
+    }
+},
+{
+    "model": "budget.budget",
+    "pk": 7,
+    "fields": {
+        "create_date": "2020-09-23T23:58:51.304Z",
+        "update_date": "2020-09-24T00:16:16.089Z",
+        "hidden": false,
+        "owner": 4,
+        "unique_name": "regular_budget",
+        "description": "Regular budget updated",
+        "available_amount": 0.0,
+        "low_amount": 0.0,
+        "photo": ""
+    }
+},
+{
+    "model": "budget.budget",
+    "pk": 8,
+    "fields": {
+        "create_date": "2020-09-24T20:21:00.555Z",
+        "update_date": "2020-10-03T18:19:01.196Z",
+        "hidden": false,
+        "owner": 4,
+        "unique_name": "photo_budget",
+        "description": "Budget with a photo",
+        "available_amount": 300.72,
+        "low_amount": 1000.0,
+        "photo": "budget_media/4/2020-09-24_eros3409.jpg"
+    }
+}
+]

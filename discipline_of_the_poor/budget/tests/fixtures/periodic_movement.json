@@ -1,0 +1,57 @@
+[
+{
+    "model": "budget.periodicmovement",
+    "pk": 35,
+    "fields": {
+        "type": "daily",
+        "day_of_week": null,
+        "day_of_month": null,
+        "time": "00:16:05.915",
+        "budget": 8
+    }
+},
+{
+    "model": "budget.periodicmovement",
+    "pk": 36,
+    "fields": {
+        "type": "daily",
+        "day_of_week": null,
+        "day_of_month": null,
+        "time": "00:21:50.112",
+        "budget": 8
+    }
+},
+{
+    "model": "budget.periodicmovement",
+    "pk": 37,
+    "fields": {
+        "type": "daily",
+        "day_of_week": null,
+        "day_of_month": null,
+        "time": "00:22:37.357",
+        "budget": 8
+    }
+},
+{
+    "model": "budget.periodicmovement",
+    "pk": 38,
+    "fields": {
+        "type": "daily",
+        "day_of_week": null,
+        "day_of_month": null,
+        "time": "00:28:55.693",
+        "budget": 8
+    }
+},
+{
+    "model": "budget.periodicmovement",
+    "pk": 41,
+    "fields": {
+        "type": "daily",
+        "day_of_week": null,
+        "day_of_month": null,
+        "time": "02:58:45.839",
+        "budget": 8
+    }
+}
+]

@@ -1,0 +1,24 @@
+[
+{
+    "model": "budget.movementcategory",
+    "pk": 1,
+    "fields": {
+        "create_date": "2020-07-11T17:17:55.290Z",
+        "update_date": "2020-09-02T16:08:52.324Z",
+        "hidden": false,
+        "unique_name": "income",
+        "description": "Income movement, adds to the budget"
+    }
+},
+{
+    "model": "budget.movementcategory",
+    "pk": 2,
+    "fields": {
+        "create_date": "2020-07-11T17:17:55.381Z",
+        "update_date": "2020-09-02T16:08:52.387Z",
+        "hidden": false,
+        "unique_name": "expense",
+        "description": "Expense movement, substracts from the budget"
+    }
+}
+]

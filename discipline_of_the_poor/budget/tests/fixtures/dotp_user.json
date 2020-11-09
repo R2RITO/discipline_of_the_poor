@@ -1,0 +1,254 @@
+[
+{
+    "model": "dotp_users.dotpuser",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$DqszFdrIAJh8$hF3MBJVcCNUXZ8942o+Sp4kr49DCI6BELSbeXzxS/Qs=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "ramirez",
+        "first_name": "Ramirez",
+        "last_name": "Suscribete",
+        "email": "backdoor@ttt.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-09-02T16:05:25.181Z",
+        "privilege": "regular",
+        "notify_low_budget_amount": false,
+        "groups": [],
+        "user_permissions": [
+            [
+                "add_budget",
+                "budget",
+                "budget"
+            ],
+            [
+                "change_budget",
+                "budget",
+                "budget"
+            ],
+            [
+                "delete_budget",
+                "budget",
+                "budget"
+            ],
+            [
+                "view_budget",
+                "budget",
+                "budget"
+            ],
+            [
+                "add_budgetmovement",
+                "budget",
+                "budgetmovement"
+            ],
+            [
+                "change_budgetmovement",
+                "budget",
+                "budgetmovement"
+            ],
+            [
+                "delete_budgetmovement",
+                "budget",
+                "budgetmovement"
+            ],
+            [
+                "view_budgetmovement",
+                "budget",
+                "budgetmovement"
+            ],
+            [
+                "add_movement",
+                "budget",
+                "movement"
+            ],
+            [
+                "change_movement",
+                "budget",
+                "movement"
+            ],
+            [
+                "delete_movement",
+                "budget",
+                "movement"
+            ],
+            [
+                "view_movement",
+                "budget",
+                "movement"
+            ],
+            [
+                "view_movementcategory",
+                "budget",
+                "movementcategory"
+            ],
+            [
+                "add_periodicmovement",
+                "budget",
+                "periodicmovement"
+            ],
+            [
+                "change_periodicmovement",
+                "budget",
+                "periodicmovement"
+            ],
+            [
+                "delete_periodicmovement",
+                "budget",
+                "periodicmovement"
+            ],
+            [
+                "view_periodicmovement",
+                "budget",
+                "periodicmovement"
+            ],
+            [
+                "add_singlemovement",
+                "budget",
+                "singlemovement"
+            ],
+            [
+                "change_singlemovement",
+                "budget",
+                "singlemovement"
+            ],
+            [
+                "delete_singlemovement",
+                "budget",
+                "singlemovement"
+            ],
+            [
+                "view_singlemovement",
+                "budget",
+                "singlemovement"
+            ]
+        ]
+    }
+},
+{
+    "model": "dotp_users.dotpuser",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$HeEADIl73C9s$qQRC5697nI0kl63bPpe1S48ZIEcQmrCAlvX2vEBQ6X0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "arturo",
+        "first_name": "Arturo",
+        "last_name": "Voltattorni",
+        "email": "avoltattorni@ttt.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-09-07T16:42:41.114Z",
+        "privilege": "premium",
+        "notify_low_budget_amount": true,
+        "groups": [],
+        "user_permissions": [
+            [
+                "add_budget",
+                "budget",
+                "budget"
+            ],
+            [
+                "change_budget",
+                "budget",
+                "budget"
+            ],
+            [
+                "delete_budget",
+                "budget",
+                "budget"
+            ],
+            [
+                "view_budget",
+                "budget",
+                "budget"
+            ],
+            [
+                "add_budgetmovement",
+                "budget",
+                "budgetmovement"
+            ],
+            [
+                "change_budgetmovement",
+                "budget",
+                "budgetmovement"
+            ],
+            [
+                "delete_budgetmovement",
+                "budget",
+                "budgetmovement"
+            ],
+            [
+                "view_budgetmovement",
+                "budget",
+                "budgetmovement"
+            ],
+            [
+                "add_movement",
+                "budget",
+                "movement"
+            ],
+            [
+                "change_movement",
+                "budget",
+                "movement"
+            ],
+            [
+                "delete_movement",
+                "budget",
+                "movement"
+            ],
+            [
+                "view_movement",
+                "budget",
+                "movement"
+            ],
+            [
+                "view_movementcategory",
+                "budget",
+                "movementcategory"
+            ],
+            [
+                "add_periodicmovement",
+                "budget",
+                "periodicmovement"
+            ],
+            [
+                "change_periodicmovement",
+                "budget",
+                "periodicmovement"
+            ],
+            [
+                "delete_periodicmovement",
+                "budget",
+                "periodicmovement"
+            ],
+            [
+                "view_periodicmovement",
+                "budget",
+                "periodicmovement"
+            ],
+            [
+                "add_singlemovement",
+                "budget",
+                "singlemovement"
+            ],
+            [
+                "change_singlemovement",
+                "budget",
+                "singlemovement"
+            ],
+            [
+                "delete_singlemovement",
+                "budget",
+                "singlemovement"
+            ],
+            [
+                "view_singlemovement",
+                "budget",
+                "singlemovement"
+            ]
+        ]
+    }
+}
+]
