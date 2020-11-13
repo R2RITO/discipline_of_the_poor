@@ -110,6 +110,7 @@ class BudgetViewTest(TestCase):
         result = self.client.post(
             reverse('budget-list'),
             HTTP_AUTHORIZATION=self.auth_header,
+            content_type='application/json',
             data=params
         )
 

@@ -78,6 +78,7 @@ class SingleMovementSerializer(OwnerModelSerializerMixin):
                 'budget': budget,
                 'movement': instance.movement,
                 'direction': direction,
+                'owner': instance.owner,
             }
 
             charge = BudgetMovement.objects.create(**budget_movement_data)

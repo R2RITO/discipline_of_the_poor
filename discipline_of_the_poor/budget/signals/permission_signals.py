@@ -46,7 +46,8 @@ def owner_permissions(sender, **kwargs):
         assign_perm('delete_' + sender.__name__.lower(), owner, model_obj)
 
     # Movement subclass
-    if issubclass(sender, Movement) and not (sender is Movement):
+    if (issubclass(sender, Movement) and not (sender is Movement)
+            and kwargs.get('created')):
         owner = model_obj.owner
         mov = Movement.objects.get(id=model_obj.movement_id)
         assign_perm('view_' + Movement.__name__.lower(), owner, mov)

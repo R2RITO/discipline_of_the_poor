@@ -18,6 +18,7 @@ class DotpUserSerializer(serializers.ModelSerializer):
             'email',
             'password',
             'privilege',
+            'notify_low_budget_amount',
         ]
         examples = {
             "username": "arturo",
@@ -25,7 +26,8 @@ class DotpUserSerializer(serializers.ModelSerializer):
             "first_name": "Arturo",
             "last_name": "Voltattorni",
             "email": "avoltattorni@ttt.com",
-            "privilege": "premium"
+            "privilege": "premium",
+            "notify_low_budget_amount": True,
         }
 
         write_only_fields = ['password']
