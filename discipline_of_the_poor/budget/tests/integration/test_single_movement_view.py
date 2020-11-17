@@ -211,21 +211,21 @@ class SingleMovementViewTest(TestCase):
         assert sm.owner.id != usr.id
         assert result.status_code == 404
 
-    # def test_update_single_movement_with_someone_elses_budget(self):
-    #     params = {
-    #         'budget': 3,
-    #     }
-    #     result = self.client.patch(
-    #         reverse('singlemovement-detail', kwargs={'pk': 39}),
-    #         HTTP_AUTHORIZATION=self.auth_header,
-    #         data=params,
-    #         content_type='application/json'
-    #     )
-    #     b = Budget.objects.get(pk=3)
-    #     usr = DotpUser.objects.get(username='arturo')
-    #
-    #     assert b.owner.id != usr.id
-    #     assert result.status_code == 404
+    def test_update_single_movement_with_someone_elses_budget(self):
+        params = {
+            'budget': 3,
+        }
+        result = self.client.patch(
+            reverse('singlemovement-detail', kwargs={'pk': 39}),
+            HTTP_AUTHORIZATION=self.auth_header,
+            data=params,
+            content_type='application/json'
+        )
+        b = Budget.objects.get(pk=3)
+        usr = DotpUser.objects.get(username='arturo')
+
+        assert b.owner.id != usr.id
+        assert result.status_code == 400
 
     def test_delete_single_movement(self):
         """

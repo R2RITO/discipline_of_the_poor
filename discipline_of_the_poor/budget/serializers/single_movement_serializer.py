@@ -29,6 +29,14 @@ class SingleMovementSerializer(OwnerModelSerializerMixin):
             "budget": 1,
         }
 
+    def get_fields(self, *args, **kwargs):
+        fields = super().get_fields(*args, **kwargs)
+        request = self.context.get('request', None)
+        if request and getattr(request, 'method', None) == "PATCH":
+            fields['movement'].required = False
+            fields['budget'].required = False
+        return fields
+
     def create(self, validated_data):
         movement_data = validated_data.pop('movement', {})
         budget = validated_data.pop('budget', None)
