@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from dotp_users.models.dotp_user import DotpUser
 from dotp_users.serializers.dotp_user_serializer import DotpUserSerializer
 from budget.signals.permission_signals import generate_permissions
+from guardian.shortcuts import assign_perm
 
 
 class DotpUserViewSet(viewsets.ModelViewSet):
@@ -18,5 +19,9 @@ class DotpUserViewSet(viewsets.ModelViewSet):
         user = DotpUser.objects.filter(id=result.data.get('id')).first()
         permission_list = generate_permissions()
         user.user_permissions.set(permission_list)
+
+        assign_perm('view_' + DotpUser.__name__.lower(), user, user)
+        assign_perm('change_' + DotpUser.__name__.lower(), user, user)
+        assign_perm('delete_' + DotpUser.__name__.lower(), user, user)
 
         return result

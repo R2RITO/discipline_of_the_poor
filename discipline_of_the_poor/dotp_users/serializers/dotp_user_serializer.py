@@ -34,13 +34,17 @@ class DotpUserSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
     def create(self, validated_data):
-        user = DotpUser.objects.create(
-            username=validated_data['username'],
-            email=validated_data['email'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            privilege=validated_data['privilege']
-        )
+        user_data = {
+            'username': validated_data['username'],
+            'email': validated_data['email'],
+            'first_name': validated_data['first_name'],
+            'last_name': validated_data['last_name'],
+        }
+
+        if validated_data.get('privilege'):
+            user_data['privilege'] = validated_data.get('privilege')
+
+        user = DotpUser.objects.create(**user_data)
 
         user.set_password(validated_data['password'])
         user.save()

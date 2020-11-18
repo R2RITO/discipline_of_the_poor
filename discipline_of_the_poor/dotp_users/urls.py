@@ -1,7 +1,7 @@
 """
 DotpUsers app urls
 """
-from django.conf.urls import url
+from django.urls import path
 from django.urls import include
 
 from rest_framework import routers
@@ -15,11 +15,15 @@ router = routers.DefaultRouter()
 router.register(r'register', DotpUserViewSet)
 
 urlpatterns = [
-    url(r'dotp_auth/', include(router.urls)),
-    url(r'dotp_auth/token',
+    path('dotp_auth/', include(router.urls)),
+    path(
+        'dotp_auth/token',
         TokenObtainPairView.as_view(),
-        name='token_obtain_pair'),
-    url(r'dotp_auth/refresh',
+        name='token_obtain_pair'
+    ),
+    path(
+        'dotp_auth/refresh',
         TokenRefreshView.as_view(),
-        name='token_refresh_view'),
+        name='token_refresh_view'
+    ),
 ]

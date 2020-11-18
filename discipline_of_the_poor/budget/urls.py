@@ -1,7 +1,7 @@
 """
 Budget app URLs
 """
-from django.conf.urls import url
+from django.urls import path
 from django.urls import include
 from rest_framework import routers
 from budget.views.budget_view import BudgetViewSet
@@ -24,6 +24,10 @@ router.register(r'movement_category', MovementCategoryViewSet)
 router.register(r'movement_category', MovementCategoryViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
-    url(r'^notify_low_budget_amount', NotifyLowBudgetAmountView.as_view()),
+    path('', include(router.urls)),
+    path(
+        'notify_low_budget_amount',
+        NotifyLowBudgetAmountView.as_view(),
+        name='notifylowbudgetamount-list'
+    ),
 ]
