@@ -7,7 +7,7 @@ djangorestframework-guardian==0.3.0
 djangorestframework-simplejwt==4.4.0
 drf-yasg==1.17.1
 drf-yasg-examples==0.1.1
-pillow==7.2.0
+pillow==8.2.0
 celery==4.4.7
 django-celery-beat==2.0.0
 yagmail==0.13.241
